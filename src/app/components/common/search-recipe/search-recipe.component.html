@@ -1,0 +1,17 @@
+<div class="search-container">
+    <mat-form-field appearance="outline">
+        <mat-select 
+        placeholder="Pretraga recepta" 
+        disableOptionCentering 
+        panelClass="custom-dropdown-position"
+        (selectionChange)="onSearchTypeSelected($event)"
+        >
+          <mat-option 
+          *ngFor="let food of foods" 
+          [value]="food.value"
+          >
+            {{food.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>   
+</div>

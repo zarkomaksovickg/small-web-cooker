@@ -1,0 +1,9 @@
+section.header {
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px 0px;
+    .header-item {
+        flex: 0 0 33%;
+    }
+}
+

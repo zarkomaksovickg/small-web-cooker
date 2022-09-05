@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: 'https://tasty.p.rapidapi.com',
+  xRapidapiKey: '0fea031f60mshbf505ca2ca0a81cp147cf1jsncb11e2ed6a0b',
+  xRapidapiHost: 'tasty.p.rapidapi.com'
 };
 
 /*

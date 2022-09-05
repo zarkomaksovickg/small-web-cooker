@@ -1,0 +1,17 @@
+.search-holder {
+    min-height: 100px;
+    .radio-search {
+        width: 70%;
+        margin: auto;
+        .custom-radio-group {
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+    .text-search {
+        width: 33%;
+        mat-form-field {
+            width: 100%;
+        }
+    }
+}

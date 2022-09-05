@@ -1,0 +1,14 @@
+<div class="recipe-item-container" *ngIf="recipe">
+    <h1>
+        {{ recipe.name | isEmptyValue}}
+    </h1>
+    <div>
+
+        <p>
+            {{ (recipe.description | isEmptyValue).substring(0, 330)}}
+        </p>
+        <figure class="card__image-container">
+            <img [src]="recipe.thumbnail_url" [alt]="recipe.thumbnail_alt_text">
+        </figure>
+    </div>
+</div>

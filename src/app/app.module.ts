@@ -3,16 +3,45 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { WebCookerHomeComponent } from './components/web-cooker-home/web-cooker-home.component';
+import { WebCookerHeaderComponent } from './components/web-cooker-header/web-cooker-header.component';
+import { MaterialModule } from './modules/material/material.module';
+import { SearchRecipeComponent } from './components/common/search-recipe/search-recipe.component';
+import { WebCookerLogoComponent } from './components/common/web-cooker-logo/web-cooker-logo.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WebCookerSearchComponent } from './components/web-cooker-search/web-cooker-search.component';
+import { FormsModule } from '@angular/forms';
+import { WebCookerRecipesListComponent } from './components/web-cooker-recipes-list/web-cooker-recipes-list.component';
+import { WebCookerRecipeItemComponent } from './components/web-cooker-recipe-item/web-cooker-recipe-item.component';
+import { IsEmptyValuePipe } from './pipes/is-empty-value.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WebCookerHomeComponent,
+    WebCookerHeaderComponent,
+    SearchRecipeComponent,
+    WebCookerLogoComponent,
+    WebCookerSearchComponent,
+    WebCookerRecipesListComponent,
+    WebCookerRecipeItemComponent,
+    IsEmptyValuePipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    MaterialModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

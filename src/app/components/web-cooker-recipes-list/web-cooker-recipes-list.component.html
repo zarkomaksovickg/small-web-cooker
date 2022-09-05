@@ -1,0 +1,8 @@
+
+<main>
+    <section class="cards">
+        <div *ngFor="let recipe of (recipes | async)" class="card">
+            <app-web-cooker-recipe-item  [recipe]="recipe"></app-web-cooker-recipe-item>
+        </div>
+    </section>
+</main>
