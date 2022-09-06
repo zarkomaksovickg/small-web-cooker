@@ -3,3 +3,4 @@
 <div class="recipes-list-container">
     <app-web-cooker-recipes-list></app-web-cooker-recipes-list>
 </div>
+<app-loading *ngIf="(isLoading$ | async)"></app-loading>

@@ -1,0 +1,55 @@
+
+.recipe-item-container { 
+    height: 100%;
+    position: relative; 
+    .dialog-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 10px;
+        .marker-line {
+            width: 100px;
+            border: 3px solid;
+            border-radius: 5px;
+            height: 0;
+        }
+        .close-button button{
+            width: 35px;
+            height: 35px;
+            background: none;
+            border: 1px solid;
+            border-radius: 999px;
+            cursor: pointer;
+        }
+    }
+    .recipe-item-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        position: absolute;
+        bottom: 60px;
+        .recipe-description{
+            max-height: 25vh;
+            overflow: auto;
+            padding-right: 30px;
+        }
+        .card-image-container {
+            width: 100%;
+            padding-top: 56.25%;
+            overflow: hidden;
+            position: relative;
+            img {
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+    .button-holder {
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+

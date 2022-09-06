@@ -15,7 +15,10 @@ import { WebCookerSearchComponent } from './components/web-cooker-search/web-coo
 import { FormsModule } from '@angular/forms';
 import { WebCookerRecipesListComponent } from './components/web-cooker-recipes-list/web-cooker-recipes-list.component';
 import { WebCookerRecipeItemComponent } from './components/web-cooker-recipe-item/web-cooker-recipe-item.component';
-import { IsEmptyValuePipe } from './pipes/is-empty-value.pipe';
+import { TextLengthPipe } from './pipes/text-length.pipe';
+import { LoadingComponent } from './components/common/loading/loading.component';
+import { WebCookerRecipeItemDialogComponent } from './components/common/web-cooker-recipe-item-dialog/web-cooker-recipe-item-dialog.component';
+import { WebCookerButtonComponent } from './components/common/web-cooker-button/web-cooker-button.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { IsEmptyValuePipe } from './pipes/is-empty-value.pipe';
     WebCookerSearchComponent,
     WebCookerRecipesListComponent,
     WebCookerRecipeItemComponent,
-    IsEmptyValuePipe
+    TextLengthPipe,
+    LoadingComponent,
+    WebCookerRecipeItemDialogComponent,
+    WebCookerButtonComponent
   ],
   imports: [
     BrowserModule,

@@ -28,16 +28,16 @@ export class WebCookerSearchComponent implements OnInit, OnDestroy {
     private dataService: DataService
   ) {
     this.subs.add(
-      this.commonService.searchType.subscribe((res: string) => this.searchTypeSelected = res)
+      this.commonService.searchTypeObs$.subscribe((res: string) => this.searchTypeSelected = res)
     )
    }
 
-
-  ngOnDestroy(): void {
-    this.subs.unsubscribe();
+  ngOnInit(): void {
+    this.initializeTypingListener()
   }
 
-  ngOnInit(): void {
+  // user typing listener
+  initializeTypingListener() {
     this.subs.add(this.searchSubject.pipe(
       debounceTime(500),
       distinctUntilChanged(),
@@ -45,13 +45,19 @@ export class WebCookerSearchComponent implements OnInit, OnDestroy {
     ).subscribe())
   }
 
+  // query recipes based on radio button selection
   recipeSelected(event: MatRadioChange) {
-      console.log(event.value)
       this.dataService.getRecipies(event.value, '?tags=')
   }
 
+  // query recipes based on user input typing
   recipeNameSearch(event: Event) {
     const target = event.target as HTMLInputElement;
     this.searchSubject.next(target.value.trim());
   }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
+
 }

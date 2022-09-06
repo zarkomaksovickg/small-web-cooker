@@ -1,0 +1,34 @@
+<div class="recipe-item-container" *ngIf="recipe">
+    
+    <div class="dialog-header">
+        <div class="marker-line accent-color"></div>
+        <div class="close-button">
+            <button type="button" class="flex-center" (click)="dialogRef.close()">
+                <mat-icon aria-hidden="false" aria-label="Web cooker shop" fontIcon="close"></mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="recipe-item-title">
+        <h1>
+            {{ recipe.name}}
+        </h1>
+    </div>
+  
+    <div class="recipe-item-content">
+        <div class="recipe-description">
+            <p class="mat-caption"> 
+                {{ recipe.description}} 
+            </p>
+            <p>
+                {{ recipe.description}}
+            </p>
+        </div>
+        <figure class="card-image-container">
+            <img [src]="recipe.thumbnail_url" [alt]="recipe.thumbnail_alt_text">
+        </figure>
+    </div>
+    <div class="button-holder">
+        <app-web-cooker-button [buttonLabel]="'Dodaj u korpu'"></app-web-cooker-button>
+    </div>
+</div>

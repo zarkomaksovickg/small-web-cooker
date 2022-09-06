@@ -1,13 +1,12 @@
-<div class="recipe-item-container" *ngIf="recipe">
+<div class="recipe-item-container" *ngIf="recipe" (click)="openDialog('800ms', '800ms')">
     <h1>
-        {{ recipe.name | isEmptyValue}}
+        {{ recipe.name | textLength:40}}
     </h1>
     <div>
-
-        <p>
-            {{ (recipe.description | isEmptyValue).substring(0, 330)}}
+        <p class="mat-caption">
+            {{ recipe.description | textLength:300 }}
         </p>
-        <figure class="card__image-container">
+        <figure class="recipe-image-container">
             <img [src]="recipe.thumbnail_url" [alt]="recipe.thumbnail_alt_text">
         </figure>
     </div>

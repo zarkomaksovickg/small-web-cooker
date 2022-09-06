@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Recipe } from 'src/app/interfaces/recipe';
+import { Component } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -8,16 +6,12 @@ import { DataService } from 'src/app/services/data.service';
   templateUrl: './web-cooker-recipes-list.component.html',
   styleUrls: ['./web-cooker-recipes-list.component.scss']
 })
-export class WebCookerRecipesListComponent implements OnInit {
-  recipes: Observable<Recipe[]>;
+export class WebCookerRecipesListComponent  {
+  recipes = this.dataService.recipesListObs$
  
   constructor(
     private dataService: DataService
-  ) { 
-    this.recipes = this.dataService.recipesList;
-  }
+  ) { }
 
-  ngOnInit(): void {
-  }
 
 }

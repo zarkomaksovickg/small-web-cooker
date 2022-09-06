@@ -1,19 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
+import { Component } from '@angular/core';
+import { AppCommonService } from 'src/app/services/app-common.service';
 
 @Component({
   selector: 'app-web-cooker-home',
   templateUrl: './web-cooker-home.component.html',
   styleUrls: ['./web-cooker-home.component.scss']
 })
-export class WebCookerHomeComponent implements OnInit {
-
+export class WebCookerHomeComponent {
+  isLoading$ = this.commonService.isLoadingObs$
   constructor(
-    private dataService: DataService
+    private commonService: AppCommonService
   ) { }
-
-  ngOnInit(): void {
-    // this.dataService.getRecipies().subscribe()
-  }
-
 }
