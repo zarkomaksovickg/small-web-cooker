@@ -4,7 +4,7 @@
     </h1>
     <div>
         <p class="mat-caption">
-            {{ recipe.description | textLength:300 }}
+            {{ recipe.description | textLength:250 }}
         </p>
         <figure class="recipe-image-container">
             <img [src]="recipe.thumbnail_url" [alt]="recipe.thumbnail_alt_text">

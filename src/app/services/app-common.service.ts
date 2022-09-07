@@ -1,5 +1,5 @@
-import { SelectionChange } from '@angular/cdk/collections';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -14,5 +14,13 @@ export class AppCommonService {
   isLoading = new BehaviorSubject<boolean>(false);
   isLoadingObs$ = this.isLoading as Observable<boolean>;
 
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar) { }
+
+  openSnackBar(message: string, action: string, className: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      panelClass: [className]
+    });
+  }
+
 }

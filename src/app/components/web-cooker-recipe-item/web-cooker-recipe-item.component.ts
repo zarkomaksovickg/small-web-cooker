@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Recipe } from 'src/app/interfaces/recipe';
+import { DataService } from 'src/app/services/data.service';
 import { WebCookerRecipeItemDialogComponent } from '../common/web-cooker-recipe-item-dialog/web-cooker-recipe-item-dialog.component';
 
 @Component({
@@ -11,17 +12,16 @@ import { WebCookerRecipeItemDialogComponent } from '../common/web-cooker-recipe-
 export class WebCookerRecipeItemComponent {
   @Input() recipe: Recipe | undefined;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private dataService: DataService) {}
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    
-    const dialogConfig = new MatDialogConfig()
-    dialogConfig.data = this.recipe;
-    dialogConfig.panelClass = ['recipe-dialog'];
-    dialogConfig.enterAnimationDuration = enterAnimationDuration;
-    dialogConfig.exitAnimationDuration = exitAnimationDuration;
-
-    this.dialog.open(WebCookerRecipeItemDialogComponent, dialogConfig);
+    this.dataService.getRecipeByID(this.recipe!.id).subscribe((response: Recipe) => {
+      const dialogConfig = new MatDialogConfig()
+      dialogConfig.data = response;
+      dialogConfig.panelClass = ['recipe-dialog'];
+      dialogConfig.enterAnimationDuration = enterAnimationDuration;
+      dialogConfig.exitAnimationDuration = exitAnimationDuration;
+      this.dialog.open(WebCookerRecipeItemDialogComponent, dialogConfig);
+    });
   }
-
 }

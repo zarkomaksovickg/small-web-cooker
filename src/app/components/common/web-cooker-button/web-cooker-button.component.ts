@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-web-cooker-button',
@@ -8,10 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class WebCookerButtonComponent implements OnInit {
   @Input()
   buttonLabel!: string;
+  @Output()buttonClickedEvent = new EventEmitter<boolean>();
   
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  clickActionEmmiter() {
+    this.buttonClickedEvent.emit(true);
+  }
 }

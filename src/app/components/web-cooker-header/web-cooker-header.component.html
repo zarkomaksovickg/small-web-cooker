@@ -6,6 +6,6 @@
         <app-search-recipe></app-search-recipe>
     </div>
     <div class="header-item flex-center">
-        <app-web-cooker-button [buttonLabel]="'Pogledaj korpu'"></app-web-cooker-button>
+        <app-web-cooker-button [buttonLabel]="'Pogledaj korpu'" (buttonClickedEvent)="onButtonClicked($event)"></app-web-cooker-button>
     </div>
 </section>

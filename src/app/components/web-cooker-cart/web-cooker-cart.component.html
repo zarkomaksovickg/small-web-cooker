@@ -1,0 +1,25 @@
+<app-web-cooker-header></app-web-cooker-header>
+<section class="cart-container">
+    <div class="cart-header">
+        <h1 class="mat-title">Moja korpa</h1>
+    </div>
+    <div *ngFor="let recipeItem of (recipeItems | async)" class="recipe-info">
+        <div class="mat-headline">
+            {{ recipeItem.count }} 
+            <mat-icon aria-hidden="false" aria-label="Web cooker shop" fontIcon="close" style="padding-top:3px;"></mat-icon>
+        </div>
+        <div>
+            <div class="mat-headline recipe-header">
+                <span>
+                    {{ recipeItem.recipe.name  }}
+                </span>
+                <button type="button" (click)="deleteItem(recipeItem.recipe.id)" class="secondary-color delete-button flex-center">
+                    <mat-icon aria-hidden="false" aria-label="Web cooker shop" fontIcon="close"></mat-icon>
+                </button>
+            </div>
+            <div class="mat-caption">
+                {{ recipeItem.recipe.description }}
+            </div>
+        </div>
+    </div>
+</section>

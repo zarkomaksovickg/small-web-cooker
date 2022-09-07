@@ -19,6 +19,7 @@ import { TextLengthPipe } from './pipes/text-length.pipe';
 import { LoadingComponent } from './components/common/loading/loading.component';
 import { WebCookerRecipeItemDialogComponent } from './components/common/web-cooker-recipe-item-dialog/web-cooker-recipe-item-dialog.component';
 import { WebCookerButtonComponent } from './components/common/web-cooker-button/web-cooker-button.component';
+import { WebCookerCartComponent } from './components/web-cooker-cart/web-cooker-cart.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { WebCookerButtonComponent } from './components/common/web-cooker-button/
     TextLengthPipe,
     LoadingComponent,
     WebCookerRecipeItemDialogComponent,
-    WebCookerButtonComponent
+    WebCookerButtonComponent,
+    WebCookerCartComponent
   ],
   imports: [
     BrowserModule,

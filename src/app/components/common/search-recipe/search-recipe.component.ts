@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
+import { Router } from '@angular/router';
 import { SearchTypes } from 'src/app/interfaces/search-types';
 import { AppCommonService } from 'src/app/services/app-common.service';
 
@@ -15,10 +16,12 @@ export class SearchRecipeComponent {
  ]
 
   constructor(
-    private commonService: AppCommonService
+    private commonService: AppCommonService,
+    private router: Router
   ) { }
 
   onSearchTypeSelected(event: MatSelectChange) {
     this.commonService.searchType.next(event.value)
+    this.router.navigateByUrl('/home')
   }
 }

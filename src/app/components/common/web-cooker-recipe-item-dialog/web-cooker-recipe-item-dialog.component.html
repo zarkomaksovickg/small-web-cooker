@@ -16,11 +16,11 @@
     </div>
   
     <div class="recipe-item-content">
-        <div class="recipe-description">
+        <div class="recipe-description custom-scroll-bar">
             <p class="mat-caption"> 
                 {{ recipe.description}} 
             </p>
-            <p>
+            <p class="mat-display-2">
                 {{ recipe.description}}
             </p>
         </div>
@@ -28,7 +28,16 @@
             <img [src]="recipe.thumbnail_url" [alt]="recipe.thumbnail_alt_text">
         </figure>
     </div>
-    <div class="button-holder">
-        <app-web-cooker-button [buttonLabel]="'Dodaj u korpu'"></app-web-cooker-button>
+    <div class="button-holder primary-color flex-center">
+        <div class="count-change flex-center">
+            <button class="counter" (click)="counterHandler(false)" [disabled]="count === 1">
+                <mat-icon aria-hidden="false" aria-label="Web cooker shop" fontIcon="remove"></mat-icon>
+            </button>
+            <input type="number" class="primary-color text-center" [(ngModel)]="count">
+            <button class="counter" (click)="counterHandler(true)">
+                <mat-icon aria-hidden="false" aria-label="Web cooker shop" fontIcon="add"></mat-icon>
+            </button>
+        </div>
+        <app-web-cooker-button [buttonLabel]="'Dodaj u korpu'" (buttonClickedEvent)="addToCart()"></app-web-cooker-button>
     </div>
 </div>
