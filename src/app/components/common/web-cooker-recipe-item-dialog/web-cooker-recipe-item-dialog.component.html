@@ -20,9 +20,19 @@
             <p class="mat-caption"> 
                 {{ recipe.description}} 
             </p>
-            <p class="mat-display-2">
-                {{ recipe.description}}
+            <p>
+                <strong>    
+                    Ključne reči:
+                </strong>
             </p>
+            <ul>
+                <li *ngFor="let tag of recipe.tags">
+                    {{ tag.display_name}}
+                </li>
+            </ul>
+            <!-- <p class="mat-display-2" *ngFor="let tag of recipe.tags">
+                {{ tag.name}}
+            </p> -->
         </div>
         <figure class="card-image-container">
             <img [src]="recipe.thumbnail_url" [alt]="recipe.thumbnail_alt_text">
@@ -39,5 +49,9 @@
             </button>
         </div>
         <app-web-cooker-button [buttonLabel]="'Dodaj u korpu'" (buttonClickedEvent)="addToCart()"></app-web-cooker-button>
+    </div>
+    <!-- TODO: No price found in API response, add real data -->
+    <div class="price-holder">
+        Cena: {{ price * count | currency:'€ ': 'symbol' : '1.0-0' }}
     </div>
 </div>

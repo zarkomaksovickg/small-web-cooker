@@ -12,16 +12,21 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class WebCookerSearchComponent implements OnInit, OnDestroy {
   searchTypeSelected: string | undefined;
+
+  searchKeyword: string | null = null;
+  selectedRecipeType: number | undefined;
+
   private subs = new Subscription();
   private readonly searchSubject = new Subject<string>();
 
   recipeTypes: SearchTypes[] = [
-    {name: 'American', value: 'american'},
-    {name: 'Greek', value: 'greek'},
-    {name: 'Mexican', value: 'mexican'},
-    {name: 'Vegan', value: 'vegan'},
-    {name: 'Drinks', value: 'drinks'},
+    {name: 'Američki', value: 'american'},
+    {name: 'Grčki', value: 'greek'},
+    {name: 'Meksički', value: 'mexican'},
+    {name: 'Veganski', value: 'vegan'},
+    {name: 'Pića', value: 'drinks'},
   ];
+  direction: boolean | undefined;
 
   constructor(
     private commonService: AppCommonService,
@@ -29,7 +34,13 @@ export class WebCookerSearchComponent implements OnInit, OnDestroy {
   ) {
     this.subs.add(
       this.commonService.searchTypeObs$.subscribe((res: string) => this.searchTypeSelected = res)
-    )
+      );
+    this.subs.add(
+      this.commonService.radioSelectionIndexObs$.subscribe((res: number) => this.selectedRecipeType = res)
+      );
+    this.subs.add(
+      this.commonService.selectedKeywordObs$.subscribe((res: string) => this.searchKeyword = res)
+    );
    }
 
   ngOnInit(): void {
@@ -41,13 +52,19 @@ export class WebCookerSearchComponent implements OnInit, OnDestroy {
     this.subs.add(this.searchSubject.pipe(
       debounceTime(500),
       distinctUntilChanged(),
-      switchMap(async (searchQuery) => this.dataService.getRecipies(searchQuery, '?q='))
+      switchMap(async (searchQuery) => {
+      this.commonService.selectedKeyword.next(searchQuery);
+      this.commonService.radioSelectionIndex.next(undefined)
+      this.dataService.getRecipies(searchQuery, '?q=', 0)
+      })
     ).subscribe())
   }
 
   // query recipes based on radio button selection
-  recipeSelected(event: MatRadioChange) {
-      this.dataService.getRecipies(event.value, '?tags=')
+  recipeSelected(event: MatRadioChange, index: number) {
+      this.dataService.getRecipies(event.value, '?tags=', 0);
+      this.commonService.radioSelectionIndex.next(index);
+      this.commonService.selectedKeyword.next(null)
   }
 
   // query recipes based on user input typing

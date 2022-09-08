@@ -2,10 +2,12 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import config from '../../config.json'
+
 export const environment = {
   production: false,
   baseUrl: 'https://tasty.p.rapidapi.com',
-  xRapidapiKey: '0fea031f60mshbf505ca2ca0a81cp147cf1jsncb11e2ed6a0b',
+  xRapidapiKey: config.tastyKey,
   xRapidapiHost: 'tasty.p.rapidapi.com'
 };
 

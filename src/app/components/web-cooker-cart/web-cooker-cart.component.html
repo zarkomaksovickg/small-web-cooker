@@ -1,7 +1,10 @@
 <app-web-cooker-header></app-web-cooker-header>
 <section class="cart-container">
-    <div class="cart-header">
+    <div class="cart-header flex-center space-between">
         <h1 class="mat-title">Moja korpa</h1>
+        <button type="button" class="web-cooker-button extra-small-button primary-color flex-center" (click)="back()">
+            <mat-icon aria-hidden="false" aria-label="Web cooker shop" fontIcon="arrow_back"></mat-icon>
+        </button>
     </div>
     <div *ngFor="let recipeItem of (recipeItems | async)" class="recipe-info">
         <div class="mat-headline">
@@ -9,7 +12,7 @@
             <mat-icon aria-hidden="false" aria-label="Web cooker shop" fontIcon="close" style="padding-top:3px;"></mat-icon>
         </div>
         <div>
-            <div class="mat-headline recipe-header">
+            <div class="mat-headline flex-center space-between">
                 <span>
                     {{ recipeItem.recipe.name  }}
                 </span>
@@ -17,9 +20,15 @@
                     <mat-icon aria-hidden="false" aria-label="Web cooker shop" fontIcon="close"></mat-icon>
                 </button>
             </div>
-            <div class="mat-caption">
+            <div class="mat-caption description">
                 {{ recipeItem.recipe.description }}
             </div>
         </div>
+    </div>
+    <div *ngIf="!(recipeItems | async)?.length" class="flex-center pt-100 faded text-center">
+        <h1 class="mat-title">
+            Korpa je prazna 
+        </h1> 
+        <mat-icon class="empty-list" aria-hidden="false" aria-label="Web cooker shop" fontIcon="sentiment_dissatisfied"></mat-icon>
     </div>
 </section>

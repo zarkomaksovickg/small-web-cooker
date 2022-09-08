@@ -1,6 +1,15 @@
 
-<section class="cards">
-    <div *ngFor="let recipe of (recipes | async)" class="recipe-card">
+<section class="cards" >
+    <div *ngFor="let recipe of (recipes | async )" class="recipe-card">
         <app-web-cooker-recipe-item  [recipe]="recipe"></app-web-cooker-recipe-item>
     </div>
 </section>
+<div *ngIf="(recipes | async)?.length">
+    <app-web-cooker-paginator></app-web-cooker-paginator>
+</div>
+<div *ngIf="!(recipes | async)?.length" class="flex-center pt-100 faded text-center">
+    <h1 class="mat-title">
+        Pronadji svoj omiljeni recept
+    </h1> 
+    <mat-icon class="empty-list" aria-hidden="false" aria-label="Web cooker shop" fontIcon="restaurant"></mat-icon>
+</div>

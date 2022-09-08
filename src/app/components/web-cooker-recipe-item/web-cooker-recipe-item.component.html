@@ -1,7 +1,12 @@
 <div class="recipe-item-container" *ngIf="recipe" (click)="openDialog('800ms', '800ms')">
-    <h1>
-        {{ recipe.name | textLength:40}}
-    </h1>
+    <div class="flex-center space-between">
+        <h1>
+            {{ recipe.name | textLength:40}}
+        </h1>
+        <button type="button" class="web-cooker-button extra-small-button primary-color flex-center" (click)="addToCart($event)">
+            <mat-icon aria-hidden="false" aria-label="Web cooker shop" fontIcon="add"></mat-icon>
+        </button>
+    </div>
     <div>
         <p class="mat-caption">
             {{ recipe.description | textLength:250 }}

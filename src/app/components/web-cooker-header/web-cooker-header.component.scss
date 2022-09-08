@@ -2,8 +2,17 @@ section.header {
     width: 100%;
     justify-content: space-between;
     padding: 20px 0px;
+    position: sticky; 
+    top: 0;
+    z-index: 2;
+    background-color: #fbfbf0;
     .header-item {
         flex: 0 0 33%;
     }
+    @media only screen and (max-width: 900px) {
+        .header-item {
+            width: 80%;
+            padding-bottom: 20px;
+        }
+    }
 }
-

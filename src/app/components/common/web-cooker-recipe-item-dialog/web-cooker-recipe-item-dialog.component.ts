@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Recipe, RecipeItem } from 'src/app/interfaces/recipe';
 import { RecipeHandlerService } from 'src/app/services/recipe-handler.service';
@@ -11,7 +11,8 @@ import { RecipeHandlerService } from 'src/app/services/recipe-handler.service';
 export class WebCookerRecipeItemDialogComponent  {
   recipe = this.data;
   count: number = 1;
-
+  // TODO: replace mock data
+  price = Math.floor(Math.random() * 21)
   constructor(
     public dialogRef: MatDialogRef<WebCookerRecipeItemDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Recipe,

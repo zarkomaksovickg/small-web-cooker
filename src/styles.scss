@@ -56,9 +56,9 @@ $mall-web-cooker-typography-config: mat.define-typography-config(
 html,
 body {
 	width : 100%;
-	height: 100%;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #f5f5dc3d;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -71,12 +71,23 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  &.space-between {
+    justify-content: space-between;
+    align-items: baseline;
+  }
 }
 
 .mr-10 {
   margin-right: 10px;
 }
 
+.ml-10 {
+  margin-left: 10px;
+}
+
+.pt-100 {
+  padding-top: 100px;
+}
 .text-center {
   text-align: center;
   margin:auto;
@@ -88,6 +99,16 @@ a {
   top: 45px;
 }
 
+.mat-form-field-outline {
+  background-color: #ffab4021;
+  border-radius: 5px;
+}
+
+.text-search{
+  .mat-form-field-infix{
+    display: flex;
+  }
+}
 // mat snackbar text align
 .mat-simple-snackbar span {
   margin: auto;
@@ -107,6 +128,17 @@ a {
 .accent-color {
   color: mat-color($small-web-cooker-accent);
 }
+
+.faded {
+  color: #00000029;
+  // no data message
+  .empty-list {
+    font-size: 30px;
+    width: 30px;
+    height: 42px;
+    margin-left: 10px;  
+  }
+ } 
 
 .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
   color: black;
@@ -148,4 +180,28 @@ a {
 		rgba(255, 255, 255, .2) 75%,
 		transparent 75%,
 		transparent)
+}
+
+// primary button
+.web-cooker-button {
+  min-width: 250px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.3;
+  }
+  &.small-button {
+    min-width: 50px;
+  }
+  &.extra-small-button {
+    min-width: 25px;
+    height: 25px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .flex-column-mobile{
+   flex-direction: column;
+  }
 }

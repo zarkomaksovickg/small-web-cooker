@@ -1,4 +1,4 @@
-<section class="header flex-center">
+<section class="header flex-column-mobile flex-center">
     <div class="header-item">
         <app-web-cooker-logo></app-web-cooker-logo>
     </div>
@@ -6,6 +6,9 @@
         <app-search-recipe></app-search-recipe>
     </div>
     <div class="header-item flex-center">
-        <app-web-cooker-button [buttonLabel]="'Pogledaj korpu'" (buttonClickedEvent)="onButtonClicked($event)"></app-web-cooker-button>
+        <app-web-cooker-button 
+       [buttonLabel]="'Pogledaj korpu'" 
+       [recipeCount$]="recipeCount$"
+       (buttonClickedEvent)="onButtonClicked($event)"></app-web-cooker-button>
     </div>
 </section>

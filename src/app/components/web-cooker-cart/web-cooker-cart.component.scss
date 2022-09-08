@@ -10,6 +10,7 @@ section.cart-container {
         display: grid;
         grid-template-columns: 1fr 5fr;
         margin-top: 50px;
+        border-bottom: 1px solid #0000001a;
         .delete-button {
             min-width: 30px;
             height: 30px;
@@ -17,10 +18,13 @@ section.cart-container {
             border: none;
             cursor: pointer;
         }
-        .recipe-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .description {
+            width: 70%;
         }
+        @media only screen and (max-width: 900px) {
+            .description{
+                width: 100%;
+            }
+          }
     }
 }

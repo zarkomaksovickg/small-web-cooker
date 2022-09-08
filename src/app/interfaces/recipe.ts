@@ -4,6 +4,9 @@ export interface Recipe {
     thumbnail_url: string;
     thumbnail_alt_text: string;
     id: number;
+    tags: [
+        {display_name: string}
+    ]
 }
 export interface RecipeResponse {
     count: number;

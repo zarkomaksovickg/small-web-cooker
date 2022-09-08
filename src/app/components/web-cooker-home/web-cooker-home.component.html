@@ -1,6 +1,8 @@
 <app-web-cooker-header></app-web-cooker-header>
-<app-web-cooker-search></app-web-cooker-search>
-<div class="recipes-list-container">
-    <app-web-cooker-recipes-list></app-web-cooker-recipes-list>
+<div class="body-container">
+    <app-web-cooker-search></app-web-cooker-search>
+    <div class="recipes-list-container">
+        <app-web-cooker-recipes-list></app-web-cooker-recipes-list>
+    </div>
 </div>
 <app-loading *ngIf="(isLoading$ | async)"></app-loading>

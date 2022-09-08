@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Recipe } from 'src/app/interfaces/recipe';
+import { Recipe, RecipeItem } from 'src/app/interfaces/recipe';
 import { DataService } from 'src/app/services/data.service';
+import { RecipeHandlerService } from 'src/app/services/recipe-handler.service';
 import { WebCookerRecipeItemDialogComponent } from '../common/web-cooker-recipe-item-dialog/web-cooker-recipe-item-dialog.component';
 
 @Component({
@@ -10,9 +11,13 @@ import { WebCookerRecipeItemDialogComponent } from '../common/web-cooker-recipe-
   styleUrls: ['./web-cooker-recipe-item.component.scss']
 })
 export class WebCookerRecipeItemComponent {
-  @Input() recipe: Recipe | undefined;
+  @Input()
+  recipe!: Recipe;
 
-  constructor(private dialog: MatDialog, private dataService: DataService) {}
+  constructor(
+    private dialog: MatDialog, 
+    private dataService: DataService,
+    private recipeService: RecipeHandlerService) {}
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dataService.getRecipeByID(this.recipe!.id).subscribe((response: Recipe) => {
@@ -23,5 +28,14 @@ export class WebCookerRecipeItemComponent {
       dialogConfig.exitAnimationDuration = exitAnimationDuration;
       this.dialog.open(WebCookerRecipeItemDialogComponent, dialogConfig);
     });
+  }
+
+  addToCart(event: Event) {
+    event.stopPropagation()
+    const recipeItem: RecipeItem = {
+      count: 1,
+      recipe: this.recipe
+    }
+    this.recipeService.handleRecipe(recipeItem, true);
   }
 }

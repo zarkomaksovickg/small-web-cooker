@@ -7,5 +7,7 @@ class="web-cooker-button primary-color flex-center"
     {{ buttonLabel }}
 </span>
 <mat-icon aria-hidden="false" aria-label="Web cooker shop" fontIcon="shopping_basket"></mat-icon>
-
-</button>
+<span class="ml-10" *ngIf="(recipeCount$ | async)">
+    {{ recipeCount$ | async }}
+</span>
+</button> 

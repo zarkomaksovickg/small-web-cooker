@@ -5,17 +5,19 @@
             class="custom-radio-group"
             color=primary>
             <mat-radio-button 
-            class="example-radio-button" 
-            *ngFor="let recipeType of recipeTypes" 
+            class="radio-button" 
+            *ngFor="let recipeType of recipeTypes; let i = index" 
+            [checked]="i === selectedRecipeType"
             [value]="recipeType.value"
-            (change)="recipeSelected($event)">
+            (change)="recipeSelected($event, i)">
                 {{recipeType.name}}
             </mat-radio-button>
         </mat-radio-group>
     </div>
     <div class="text-search" *ngIf="searchTypeSelected === 'recipe_name'">
-        <mat-form-field class="example-full-width" appearance="outline">
-            <input matInput placeholder="Pretrazi..." value="" (input)="recipeNameSearch($event)">
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Pretrazi..." [value]="searchKeyword"  (input)="recipeNameSearch($event)">
+            <mat-icon aria-hidden="false" aria-label="Web cooker shop" fontIcon="search"></mat-icon>
         </mat-form-field>
     </div>
 </div>

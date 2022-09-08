@@ -17,7 +17,7 @@
             width: 35px;
             height: 35px;
             background: none;
-            border: 1px solid;
+            border: 2px solid;
             border-radius: 999px;
             cursor: pointer;
         }
@@ -27,6 +27,7 @@
         grid-template-columns: 2fr 1fr;
         position: absolute;
         bottom: 60px;
+        width: 100%;
         .recipe-description{
             max-height: 25vh;
             overflow: auto;
@@ -76,6 +77,11 @@
                 -moz-appearance: textfield;
             }
         }
+    }
+    .price-holder {
+    position: absolute;
+    bottom: 0;
+    right: 0;
     }
 }
 
