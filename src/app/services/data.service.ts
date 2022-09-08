@@ -42,7 +42,7 @@ export class DataService {
           this.recipesList.next(event.results)},
         error: error => {
           this.commonService.isLoading.next(false);
-          this.commonService.openSnackBar('An error has occured, please try again later', '', 'error')
+          this.commonService.openSnackBar('An error has occured, please try again later', '', 'secondary-color')
           console.error(error)
         }
       })
