@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { Recipe, RecipeItem, RecipeResponse } from '../interfaces/recipe';
+import { Recipe, RecipeResponse } from '../interfaces/recipe';
 import { AppCommonService } from './app-common.service';
 
 @Injectable({
@@ -16,8 +16,10 @@ export class DataService {
   recipesList = new BehaviorSubject<Recipe[]>([])
   recipesListObs$ = this.recipesList as Observable<Recipe[]>
 
+  // emit new search event to paginator for initial value reset
   newSearchInitialized = new Subject<boolean>();
   newSearchInitializedObs$ = this.newSearchInitialized as Observable<boolean>;
+  
   private searchData = {
     keyword: '',
     queryParam: ''
@@ -39,6 +41,7 @@ export class DataService {
       tap({
         next: event => {
           this.commonService.isLoading.next(false);
+          this.mockPriceForDevelopment(event.results)
           this.recipesList.next(event.results)},
         error: error => {
           this.commonService.isLoading.next(false);
@@ -47,6 +50,16 @@ export class DataService {
         }
       })
     ).subscribe()
+  }
+
+
+  // TODO: remove method to mock price for recipe items
+  // when price available
+
+  mockPriceForDevelopment(recipes: Recipe[]) {
+    recipes.forEach((recipe: Recipe) => {
+      recipe.price = Math.floor(Math.random() * 20) + 1
+    })
   }
 
   getRecipiesPaginated(from: number) {

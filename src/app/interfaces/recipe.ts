@@ -6,7 +6,8 @@ export interface Recipe {
     id: number;
     tags: [
         {display_name: string}
-    ]
+    ];
+    price: number;
 }
 export interface RecipeResponse {
     count: number;

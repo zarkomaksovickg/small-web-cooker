@@ -11,8 +11,6 @@ import { RecipeHandlerService } from 'src/app/services/recipe-handler.service';
 export class WebCookerRecipeItemDialogComponent  {
   recipe = this.data;
   count: number = 1;
-  // TODO: replace mock data
-  price = Math.floor(Math.random() * 21)
   constructor(
     public dialogRef: MatDialogRef<WebCookerRecipeItemDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Recipe,

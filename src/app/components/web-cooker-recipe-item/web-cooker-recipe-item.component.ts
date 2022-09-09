@@ -21,6 +21,8 @@ export class WebCookerRecipeItemComponent {
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dataService.getRecipeByID(this.recipe!.id).subscribe((response: Recipe) => {
+      // TODO: passing mocked price from list, remove after price available
+      response.price = this.recipe.price
       const dialogConfig = new MatDialogConfig()
       dialogConfig.data = response;
       dialogConfig.panelClass = ['recipe-dialog'];

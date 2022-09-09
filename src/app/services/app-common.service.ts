@@ -31,5 +31,4 @@ export class AppCommonService {
       panelClass: [className]
     });
   }
-
 }

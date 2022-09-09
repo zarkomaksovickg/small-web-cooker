@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './web-cooker-logo.component.html',
   styleUrls: ['./web-cooker-logo.component.scss']
 })
-export class WebCookerLogoComponent  {
-
-}
+export class WebCookerLogoComponent  {}

@@ -8,6 +8,11 @@
         </button>
     </div>
     <div>
+        <div>
+            Cena: {{ recipe.price  | currency:'€ ': 'symbol' : '1.0-0' }}
+        </div>
+    </div>
+    <div>
         <p class="mat-caption">
             {{ recipe.description | textLength:250 }}
         </p>

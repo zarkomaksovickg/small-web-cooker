@@ -5,13 +5,14 @@
     top: 0;
     right: 0;
     background: #ffffffa1;
+    z-index: 3;
 }
 $Loader-color: #ffab40;
 $Loader-size: 14.6rem;
 $Loader-offset: 1.7rem;
 $Loader-timing: ease-in-out;
 
-.Loader {
+.loader {
   position: relative;
   display: flex;
   align-items: center;

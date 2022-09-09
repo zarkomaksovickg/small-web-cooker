@@ -10,6 +10,7 @@ export class RecipeHandlerService {
   recipes: Observable<RecipeItem[]>
   private _recipes: BehaviorSubject<RecipeItem[]>;
  
+  // recipe count obs for button, emits new count value to be displayed in button
   recipeCount =  new BehaviorSubject<number>(0);
   recipeCountObs$ = this.recipeCount as Observable<number>;
 
@@ -30,17 +31,19 @@ export class RecipeHandlerService {
    loadAll() {
       this.dataStore.recipes = JSON.parse(localStorage.getItem('recipeList') || '[]')
       this._recipes.next(Object.assign({}, this.dataStore).recipes);
-      console.log(this.dataStore.recipes)
    }
 
 
    getRecipeCartCount() { 
     this.recipes.subscribe((recipeItems: RecipeItem[])=> {
-     this.recipeCount.next(0)
+     // reset counter
+    this.recipeCount.next(0)
      let count: number = 0;
+     // add new count to existing
      recipeItems.forEach(item => {
        count += item.count
      })
+     // emit new value
      this.recipeCount.next(count)
    })
  }
@@ -85,6 +88,5 @@ export class RecipeHandlerService {
     this._recipes.next(Object.assign({}, this.dataStore).recipes);
     localStorage.setItem('recipeList', JSON.stringify(this.dataStore.recipes))
     this.commonService.openSnackBar('Uspesno sacuvano!', '', 'primary-color')
-    console.log(this.dataStore)
   }
 }

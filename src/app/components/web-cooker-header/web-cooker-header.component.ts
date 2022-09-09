@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { RecipeItem } from 'src/app/interfaces/recipe';
 import { RecipeHandlerService } from 'src/app/services/recipe-handler.service';
 
 @Component({
@@ -8,15 +7,13 @@ import { RecipeHandlerService } from 'src/app/services/recipe-handler.service';
   templateUrl: './web-cooker-header.component.html',
   styleUrls: ['./web-cooker-header.component.scss']
 })
-export class WebCookerHeaderComponent implements OnInit {
+export class WebCookerHeaderComponent {
+  // recipe count from cart to display in go to cart button
   recipeCount$ = this.recipeService.recipeCountObs$
   constructor(
     private router: Router,
     private recipeService: RecipeHandlerService,
   ) { }
-
-  ngOnInit(): void {
-  }
 
   onButtonClicked(event: boolean) {
     if (event) {
